@@ -10,18 +10,19 @@ const FiltersGroup = props => {
       const {changeRating, activeRatingId} = props
       const ratingClassName =
         activeRatingId === rating.ratingId ? `and-up active-rating` : `and-up`
+
       const onClickRatingItem = () => changeRating(rating.ratingId)
 
       return (
         <li
-          className='rating-item'
+          className="rating-item"
           key={rating.ratingId}
           onClick={onClickRatingItem}
         >
           <img
             src={rating.imageUrl}
             alt={`rating ${rating.ratingId}`}
-            className='rating-img'
+            className="rating-img"
           />
           <p className={ratingClassName}>& up</p>
         </li>
@@ -31,8 +32,8 @@ const FiltersGroup = props => {
 
   const renderRatingsFilters = () => (
     <div>
-      <h1 className='rating-heading'>Rating</h1>
-      <ul className='ratings-list'>{renderRatingsFiltersList()}</ul>
+      <h1 className="rating-heading">Rating</h1>
+      <ul className="ratings-list">{renderRatingsFiltersList()}</ul>
     </div>
   )
 
@@ -49,7 +50,7 @@ const FiltersGroup = props => {
 
       return (
         <li
-          className='category-item'
+          className="category-item"
           key={category.categoryId}
           onClick={onClickCategoryItem}
         >
@@ -61,8 +62,8 @@ const FiltersGroup = props => {
 
   const renderProductCategories = () => (
     <>
-      <h1 className='category-heading'>Category</h1>
-      <ul className='categories-list'>{renderCategoriesList()}</ul>
+      <h1 className="category-heading">Category</h1>
+      <ul className="categories-list">{renderCategoriesList()}</ul>
     </>
   )
 
@@ -81,16 +82,16 @@ const FiltersGroup = props => {
   const renderSearchInput = () => {
     const {searchInput} = props
     return (
-      <div className='search-input-container'>
+      <div className="search-input-container">
         <input
           value={searchInput}
-          type='search'
-          className='search-input'
-          placeholder='Search'
+          type="search"
+          className="search-input"
+          placeholder="Search"
           onChange={onChangeSearchInput}
           onKeyDown={onEnterSearchInput}
         />
-        <BsSearch className='search-icon' />
+        <BsSearch className="search-icon" />
       </div>
     )
   }
@@ -98,13 +99,13 @@ const FiltersGroup = props => {
   const {clearFilters} = props
 
   return (
-    <div className='filters-group-container'>
+    <div className="filters-group-container">
       {renderSearchInput()}
       {renderProductCategories()}
       {renderRatingsFilters()}
       <button
-        type='button'
-        className='clear-filters-btn'
+        type="button"
+        className="clear-filters-btn"
         onClick={clearFilters}
       >
         Clear Filters

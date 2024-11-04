@@ -15,52 +15,49 @@ const CartItem = props => (
       } = value
       const {cartItemDetails} = props
       const {id, title, brand, quantity, price, imageUrl} = cartItemDetails
+      const onClickDecrement = () => {
+        decrementCartItemQuantity(id)
+      }
+      const onClickIncrement = () => {
+        incrementCartItemQuantity(id)
+      }
       const onRemoveCartItem = () => {
         removeCartItem(id)
       }
-
-      const onIncrementCartItemQty = () => {
-        incrementCartItemQuantity(id)
-      }
-
-      const onDecrementCartItemQty = () => {
-        decrementCartItemQuantity(id)
-      }
+      const totalPrice = price * quantity
 
       return (
-        <li className='cart-item'>
-          <img className='cart-product-image' src={imageUrl} alt={title} />
-          <div className='cart-item-details-container'>
-            <div className='cart-product-title-brand-container'>
-              <p className='cart-product-title'>{title}</p>
-              <p className='cart-product-brand'>by {brand}</p>
+        <li className="cart-item">
+          <img className="cart-product-image" src={imageUrl} alt={title} />
+          <div className="cart-item-details-container">
+            <div className="cart-product-title-brand-container">
+              <p className="cart-product-title">{title}</p>
+              <p className="cart-product-brand">by {brand}</p>
             </div>
-            <div className='cart-quantity-container'>
+            <div className="cart-quantity-container">
               <button
-                type='button'
-                className='quantity-controller-button'
-                aria-label='Mute volume'
-                onClick={onDecrementCartItemQty}
-                data-testid='minus'
+                type="button"
+                className="quantity-controller-button"
+                data-testid="minus"
+                onClick={onClickDecrement}
               >
-                <BsDashSquare color='#52606D' size={12} />
+                <BsDashSquare color="#52606D" size={12} />
               </button>
-              <p className='cart-quantity'>{quantity}</p>
+              <p className="cart-quantity">{quantity}</p>
               <button
-                type='button'
-                className='quantity-controller-button'
-                aria-label='Mute volume'
-                onClick={onIncrementCartItemQty}
-                data-testid='plus'
+                type="button"
+                className="quantity-controller-button"
+                data-testid="plus"
+                onClick={onClickIncrement}
               >
-                <BsPlusSquare color='#52606D' size={12} />
+                <BsPlusSquare color="#52606D" size={12} />
               </button>
             </div>
-            <div className='total-price-remove-container'>
-              <p className='cart-total-price'>Rs {price * quantity}/-</p>
+            <div className="total-price-remove-container">
+              <p className="cart-total-price">Rs {totalPrice}/-</p>
               <button
-                className='remove-button'
-                type='button'
+                className="remove-button"
+                type="button"
                 onClick={onRemoveCartItem}
               >
                 Remove
@@ -68,13 +65,12 @@ const CartItem = props => (
             </div>
           </div>
           <button
-            className='delete-button'
-            type='button'
-            aria-label='Mute volume' // Check this
+            className="delete-button"
+            type="button"
             onClick={onRemoveCartItem}
-            data-testid='remove'
+            data-testid="remove"
           >
-            <AiFillCloseCircle color='#616E7C' size={20} />
+            <AiFillCloseCircle color="#616E7C" size={20} />
           </button>
         </li>
       )
